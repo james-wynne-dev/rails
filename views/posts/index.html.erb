@@ -1,0 +1,29 @@
+<ul class="nav">
+  <li><%= link_to "Tags", '/tags' %></li>
+  <% if logged_in? %>
+    <li><%= link_to 'New Post', '/posts/new' %></li>
+    <li><%= link_to "Log out", logout_path, method: :delete %></li>
+    <li><%= link_to "Your Posts", '/posts/show' %></li>
+  <% else %>
+    <li><%= link_to 'Login', 'login' %></li>
+  <% end %>
+</ul>
+
+
+
+
+<% @posts_by_day.each do |posts_for_day| %>
+<div class="day">
+  <% posts_for_day.each do |post| %>
+  <h3><%= post.title %></h3>
+  <p><%= post.content %></p>
+  <p><%= post.date_string %></p>
+  <p><%= post.user %></p>
+  <ul><% post.tags.each do |tag| %>
+    <li><%=tag.description%></li>
+    <%end%>
+  </ul>
+  <%end%>
+</div>
+<hr>
+<%end%>

@@ -1,0 +1,17 @@
+<h1>Log in</h1>
+
+<div class="login_form">
+  <%= form_for(:session, url: login_path) do |f| %>
+
+    <%= f.label :username %>
+    <%= f.text_area :username%><br>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.submit "Log in"%>
+  <% end %>
+  <% flash.each do |message_type, message| %>
+    <div class="alert"><%= message %></div>
+  <% end %>
+</div>
